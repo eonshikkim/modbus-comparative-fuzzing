@@ -66,6 +66,9 @@ server paths disagree on three.
 | `collect_wall.py` | compares the two budgets |
 | `triage_crashes.py` | groups saved crash inputs by root cause |
 | `seeds/`, `modbus.dict` | AFL++ seed corpus and dictionary |
+| `artifacts/crashes/` | the five wall-clock crash inputs, named for the gate each enters |
+| `min.bin` | minimized CVE-2024-10918 proof-of-concept, 261 bytes |
+| `replay_*.tsv` | per-configuration replay results |
 | `RUN.md` | full reproduction procedure, sections 0–10 |
 
 ## Reproducing
