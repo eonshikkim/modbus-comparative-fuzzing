@@ -5,7 +5,6 @@ Comparative fuzzing of two independent Modbus TCP server implementations:
 public specification, so differences in what they accept, reject, or
 crash on come from the implementations rather than from the protocol.
 
-CIS 6614 group project, University of Central Florida.
 
 ## Results
 
