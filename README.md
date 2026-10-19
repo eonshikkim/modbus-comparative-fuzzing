@@ -6,6 +6,8 @@ public specification, so differences in what they accept, reject, or
 crash on come from the implementations rather than from the protocol.
 
 
+CIS 6614 group project, University of Central Florida.
+
 ## Results
 
 **CVE-2024-10918 reproduced and minimized.** `modbus_reply` in libmodbus
