@@ -1,0 +1,13 @@
+config            budget             execs    exec/s   edges  crashes
+---------------------------------------------------------------------
+v3.1.10_cap1024   300k             300,000    16,064     131        1
+v3.1.10_cap1024   30 min        25,201,009    14,000     132        5
+                                       84x          DIFFERS (131 -> 132)DIFFERS (1 -> 5)
+
+v3.1.10_cap260    300k             300,000    16,243     132        0
+v3.1.10_cap260    30 min        29,377,732    16,321     132        0
+                                       98x              same     same
+
+pymodbus server
+  300k budget   cov 113  ft 223
+  30 min        cov 117  ft 234  execs 36,874,563   cov DIFFERS (113 -> 117)

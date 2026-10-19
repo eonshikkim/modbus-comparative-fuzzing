@@ -1,0 +1,21 @@
+replayed 5 saved crash inputs from out/v3.1.10_cap1024_wall/default/crashes
+
+distinct defects: 3
+
+  [2 input(s)] stack-buffer-overflow @ modbus.c:936 WRITE_SINGLE_REGISTER
+  [2 input(s)] stack-buffer-overflow @ modbus.c:905 WRITE_SINGLE_COIL
+  [1 input(s)] stack-buffer-overflow @ modbus.c:1058 MASK_WRITE_REGISTER
+
+ASan access frames: 1 distinct
+  [5] (not symbolized)
+
+buffer-owning frames (expected to be one, the declaration line): 1 distinct
+  [5] modbus_reply modbus.c:781
+
+per input:
+   bytes  fc    gate                                   input
+     267  0x06  modbus.c:936 WRITE_SINGLE_REGISTER     id:000001,sig:06,src:000054,time:2
+     278  0x16  modbus.c:1058 MASK_WRITE_REGISTER      id:000000,sig:06,src:000011,time:2
+     296  0x05  modbus.c:905 WRITE_SINGLE_COIL         id:000003,sig:06,src:000005,time:6
+     754  0x05  modbus.c:905 WRITE_SINGLE_COIL         id:000002,sig:06,src:000074,time:6
+     845  0x06  modbus.c:936 WRITE_SINGLE_REGISTER     id:000004,sig:06,src:000006,time:6
