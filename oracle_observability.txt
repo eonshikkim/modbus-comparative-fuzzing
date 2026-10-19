@@ -1,0 +1,34 @@
+Unable to decode frame unpack requires a buffer of 5 bytes
+Unable to decode frame Modbus Error: length of record_data must be a multiple of 2
+Unable to decode frame 1 <= count 0 <= 125 !
+Unable to decode frame Modbus Error: length of record_data must be a multiple of 2
+Unable to decode frame Modbus Error: Unknown response 0
+Unable to decode frame unpack requires a buffer of 9 bytes
+Unable to decode frame Modbus Error: length of record_data must be a multiple of 2
+Unable to decode frame unpack requires a buffer of 4 bytes
+Unable to decode frame unpack requires a buffer of 7 bytes
+Invalid Modbus protocol id: 8
+Unable to decode frame index out of range
+Unable to decode frame unpack requires a buffer of 2 bytes
+Invalid Modbus protocol id: 17990
+Repeating....
+Invalid Modbus protocol id: 64000
+Unable to decode frame 1 <= count 0 <= 2000 !
+Unable to decode frame Modbus Error: Unknown response 0
+Unable to decode frame Modbus Error: Invalid byte count: 119
+Unable to decode frame unpack requires a buffer of 6 bytes
+Unable to decode frame unpack requires a buffer of 4 bytes
+Invalid Modbus protocol id: 64000
+Unable to decode frame 1 <= count 2048 <= 2000 !
+Unable to decode frame index out of range
+Unable to decode frame unpack requires a buffer of 7 bytes
+Unable to decode frame Modbus Error: Invalid byte count: 42
+Unable to decode frame unpack requires a buffer of 5 bytes
+Unable to decode frame index out of range
+files: 95
+  reached_framer: 95
+  framer_returned_pdu: 75
+  decode_object: 53
+  decode_none: 22
+  framer_no_pdu: 20
+exceptions: none

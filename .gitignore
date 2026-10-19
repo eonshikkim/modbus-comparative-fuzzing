@@ -1,0 +1,37 @@
+# ---- build trees -----------------------------------------------------
+# The three libmodbus source trees are upstream code plus local build
+# artifacts. RUN.md says which tag to check out; do not vendor them.
+lib-v*/
+*.o
+*.a
+*.so
+*.dylib
+.libs/
+
+# ---- compiled harnesses and replay drivers ---------------------------
+h_server_*
+h_client_*
+replay_lm_v*
+!replay_lm_v*.tsv
+
+# ---- fuzzer output ---------------------------------------------------
+# Multi-GB. Headline numbers live in the TSVs and in the milestone.
+out/
+corpus_py*/
+seeds_py_out/
+*.log
+
+# ---- generated input set ---------------------------------------------
+# mkprobes.py regenerates this deterministically.
+replay_inputs/
+
+# ---- editor / OS -----------------------------------------------------
+.DS_Store
+__pycache__/
+*.pyc
+pymodbus/
+
+# ---- local scratch and extracted archives ----------------------------
+Archive*/
+Archive*.zip
+gt/

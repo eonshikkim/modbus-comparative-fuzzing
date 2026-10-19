@@ -1,0 +1,27 @@
+poc/cve_2024_10918.bin	EXCEPTION	fc=0x16 code=3
+probe/combo_pid_and_len.bin	ACCEPT	rc=29 rsp_bytes=29
+probe/fc_exception_bit.bin	ACCEPT	rc=9 rsp_bytes=9
+probe/fc_unknown_00.bin	EXCEPTION	fc=0x00 code=1
+probe/fc_unknown_7f.bin	EXCEPTION	fc=0x7f code=1
+probe/len_max.bin	ACCEPT	rc=29 rsp_bytes=29
+probe/len_too_large.bin	ACCEPT	rc=29 rsp_bytes=29
+probe/len_too_small.bin	ACCEPT	rc=29 rsp_bytes=29
+probe/len_zero.bin	ACCEPT	rc=29 rsp_bytes=29
+probe/pdu_addr_out_of_range.bin	EXCEPTION	fc=0x03 code=2
+probe/pdu_bytecount_lies.bin	EXCEPTION	fc=0x10 code=3
+probe/pdu_quantity_huge.bin	EXCEPTION	fc=0x03 code=3
+probe/pdu_quantity_zero.bin	EXCEPTION	fc=0x03 code=3
+probe/pid_garbage.bin	ACCEPT	rc=29 rsp_bytes=29
+probe/pid_nonzero.bin	ACCEPT	rc=29 rsp_bytes=29
+probe/trunc_4bytes.bin	ERROR	rc=-1 errno=112345691 (Invalid data)
+probe/trunc_7bytes.bin	ERROR	rc=-1 errno=112345691 (Invalid data)
+probe/trunc_mid_pdu.bin	EXCEPTION	fc=0x03 code=3
+valid/fc01_read_coils.bin	ACCEPT	rc=10 rsp_bytes=10
+valid/fc02_read_discrete.bin	ACCEPT	rc=10 rsp_bytes=10
+valid/fc03_read_holding.bin	ACCEPT	rc=29 rsp_bytes=29
+valid/fc04_read_input.bin	ACCEPT	rc=29 rsp_bytes=29
+valid/fc05_write_coil.bin	ACCEPT	rc=12 rsp_bytes=12
+valid/fc06_write_reg.bin	ACCEPT	rc=12 rsp_bytes=12
+valid/fc0f_write_coils.bin	ACCEPT	rc=12 rsp_bytes=12
+valid/fc10_write_regs.bin	ACCEPT	rc=12 rsp_bytes=12
+valid/fc16_mask_write.bin	ACCEPT	rc=14 rsp_bytes=14

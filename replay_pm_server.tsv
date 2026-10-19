@@ -1,0 +1,27 @@
+poc/cve_2024_10918.bin	REJECT	framer: Invalid Modbus protocol id: 12336
+probe/combo_pid_and_len.bin	REJECT	framer: Invalid Modbus protocol id: 12336
+probe/fc_exception_bit.bin	ACCEPT	ExceptionResponse
+probe/fc_unknown_00.bin	DROP	decoder returned None: Unable to decode frame Modbus Error: Unknown response 0
+probe/fc_unknown_7f.bin	DROP	decoder returned None: Unable to decode frame Modbus Error: Unknown response 127
+probe/len_max.bin	INCOMPLETE	framer waiting: Short frame: 0x0 0x6 0x0 0x0 0xff 0xff 0xff 0x3 0x0 0x0 0x0 0xa wait for more data
+probe/len_too_large.bin	INCOMPLETE	framer waiting: Short frame: 0x0 0x3 0x0 0x0 0x0 0xff 0xff 0x3 0x0 0x0 0x0 0xa wait for more data
+probe/len_too_small.bin	DROP	decoder returned None: Unable to decode frame unpack requires a buffer of 4 bytes
+probe/len_zero.bin	DROP	framer consumed 6 bytes, returned empty PDU
+probe/pdu_addr_out_of_range.bin	ACCEPT	ReadHoldingRegistersRequest
+probe/pdu_bytecount_lies.bin	ACCEPT	WriteMultipleRegistersRequest
+probe/pdu_quantity_huge.bin	DROP	decoder returned None: Unable to decode frame 1 <= count 65535 <= 125 !
+probe/pdu_quantity_zero.bin	DROP	decoder returned None: Unable to decode frame 1 <= count 0 <= 125 !
+probe/pid_garbage.bin	REJECT	framer: Invalid Modbus protocol id: 12336
+probe/pid_nonzero.bin	REJECT	framer: Invalid Modbus protocol id: 1
+probe/trunc_4bytes.bin	INCOMPLETE	framer waiting: Very short frame (NO MBAP): 0x0 0x7 0x0 0x0 wait for more data
+probe/trunc_7bytes.bin	INCOMPLETE	framer waiting: Very short frame (NO MBAP): 0x0 0x8 0x0 0x0 0x0 0x6 0xff wait for more data
+probe/trunc_mid_pdu.bin	INCOMPLETE	framer waiting: Short frame: 0x0 0x9 0x0 0x0 0x0 0x6 0xff 0x3 0x0 wait for more data
+valid/fc01_read_coils.bin	ACCEPT	ReadCoilsRequest
+valid/fc02_read_discrete.bin	ACCEPT	ReadDiscreteInputsRequest
+valid/fc03_read_holding.bin	ACCEPT	ReadHoldingRegistersRequest
+valid/fc04_read_input.bin	ACCEPT	ReadInputRegistersRequest
+valid/fc05_write_coil.bin	ACCEPT	WriteSingleCoilRequest
+valid/fc06_write_reg.bin	ACCEPT	WriteSingleRegisterRequest
+valid/fc0f_write_coils.bin	ACCEPT	WriteMultipleCoilsRequest
+valid/fc10_write_regs.bin	ACCEPT	WriteMultipleRegistersRequest
+valid/fc16_mask_write.bin	ACCEPT	MaskWriteRegisterRequest

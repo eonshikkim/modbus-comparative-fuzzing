@@ -1,0 +1,168 @@
+== out/client_v3.1.10/default
+execs_done        : 300061
+execs_per_sec     : 81560.48
+corpus_count      : 52
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 139
+total_edges       : 749
+== out/client_v3.1.11/default
+execs_done        : 300037
+execs_per_sec     : 86640.77
+corpus_count      : 50
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 135
+total_edges       : 772
+== out/client_v3.2.0/default
+execs_done        : 300108
+execs_per_sec     : 81639.83
+corpus_count      : 50
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 133
+total_edges       : 814
+== out/v3.1.10_cap1024_t1/default
+execs_done        : 300057
+execs_per_sec     : 16103.53
+corpus_count      : 67
+saved_crashes     : 1
+saved_hangs       : 0
+edges_found       : 131
+total_edges       : 739
+== out/v3.1.10_cap1024_t2/default
+execs_done        : 300081
+execs_per_sec     : 16064.29
+corpus_count      : 67
+saved_crashes     : 1
+saved_hangs       : 0
+edges_found       : 131
+total_edges       : 739
+== out/v3.1.10_cap1024_t3/default
+execs_done        : 300147
+execs_per_sec     : 15552.46
+corpus_count      : 68
+saved_crashes     : 1
+saved_hangs       : 0
+edges_found       : 131
+total_edges       : 739
+== out/v3.1.10_cap260_t1/default
+execs_done        : 300224
+execs_per_sec     : 16243.25
+corpus_count      : 70
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 132
+total_edges       : 739
+== out/v3.1.10_cap260_t2/default
+execs_done        : 300251
+execs_per_sec     : 16785.05
+corpus_count      : 68
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 132
+total_edges       : 739
+== out/v3.1.10_cap260_t3/default
+execs_done        : 300130
+execs_per_sec     : 15914.42
+corpus_count      : 67
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 132
+total_edges       : 739
+== out/v3.1.11_cap1024_t1/default
+execs_done        : 300165
+execs_per_sec     : 16526.18
+corpus_count      : 70
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 137
+total_edges       : 762
+== out/v3.1.11_cap1024_t2/default
+execs_done        : 300012
+execs_per_sec     : 16154.87
+corpus_count      : 69
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 137
+total_edges       : 762
+== out/v3.1.11_cap1024_t3/default
+execs_done        : 300185
+execs_per_sec     : 15673.00
+corpus_count      : 69
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 137
+total_edges       : 762
+== out/v3.1.11_cap260_t1/default
+execs_done        : 300253
+execs_per_sec     : 16149.58
+corpus_count      : 73
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 138
+total_edges       : 762
+== out/v3.1.11_cap260_t2/default
+execs_done        : 300097
+execs_per_sec     : 16079.78
+corpus_count      : 70
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 138
+total_edges       : 762
+== out/v3.1.11_cap260_t3/default
+execs_done        : 300163
+execs_per_sec     : 16049.78
+corpus_count      : 69
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 138
+total_edges       : 762
+== out/v3.2.0_cap1024_t1/default
+execs_done        : 300014
+execs_per_sec     : 18004.80
+corpus_count      : 72
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 156
+total_edges       : 804
+== out/v3.2.0_cap1024_t2/default
+execs_done        : 300060
+execs_per_sec     : 17347.52
+corpus_count      : 69
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 156
+total_edges       : 804
+== out/v3.2.0_cap1024_t3/default
+execs_done        : 300043
+execs_per_sec     : 14912.67
+corpus_count      : 72
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 156
+total_edges       : 804
+== out/v3.2.0_cap260_t1/default
+execs_done        : 300020
+execs_per_sec     : 17762.12
+corpus_count      : 71
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 157
+total_edges       : 804
+== out/v3.2.0_cap260_t2/default
+execs_done        : 300126
+execs_per_sec     : 17564.58
+corpus_count      : 73
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 157
+total_edges       : 804
+== out/v3.2.0_cap260_t3/default
+execs_done        : 300157
+execs_per_sec     : 17525.37
+corpus_count      : 76
+saved_crashes     : 0
+saved_hangs       : 0
+edges_found       : 157
+total_edges       : 804
