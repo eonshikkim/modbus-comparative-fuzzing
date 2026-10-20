@@ -5,51 +5,32 @@ Comparative fuzzing of two independent Modbus TCP server implementations:
 public specification, so differences in what they accept, reject, or
 crash on come from the implementations rather than from the protocol.
 
-
 CIS 6614 group project, University of Central Florida.
 
 ## Results
 
-**CVE-2024-10918 reproduced and minimized.** `modbus_reply` in libmodbus
-v3.1.10 copies `req_length` bytes into `uint8_t rsp[260]` with no check
-that the two agree. The minimized proof-of-concept is 261 bytes, one
-past `MAX_MESSAGE_LENGTH`. Fixed in v3.1.11 by
-`compute_response_length_from_request`.
+- **CVE-2024-10918 reproduced.** `modbus_reply` in libmodbus v3.1.10
+  copies `req_length` bytes into `uint8_t rsp[260]` unchecked. Minimized
+  proof-of-concept: 261 bytes. Patched in v3.1.11.
+- **The same defect sits in three branches, not one.** The identical
+  unvalidated copy appears at `modbus.c:905` (FC 0x05), `:936` (FC 0x06)
+  and `:1058` (FC 0x16). The CVE write-up cites one. A 300k-execution
+  campaign found 0x16; a 30-minute campaign found all three.
+- **The threat model decides reachability.** Bound `req_length` at 260,
+  what the network path can deliver: 29,377,732 executions, zero
+  crashes. Bound it at 1024, modeling a caller that supplies its own
+  length: immediate crash. Same library, same input, same build.
+- **pymodbus crash counts are N/A, not 0.** `pdu/decoders.py:93`
+  swallows the fault class that crashes the C implementation, so an
+  exception-based oracle cannot see it. Removing the whitelist entirely
+  still produced no uncaught exception in 5,000 executions.
+- **27 shared inputs, 6 configurations, 17 diverge.** libmodbus ignores
+  the MBAP length field; pymodbus reads it and then stalls waiting for
+  bytes that never arrive. On malformed PDUs the usual narrative
+  inverts — libmodbus rejects all of them, pymodbus accepts some.
 
-**The same defect is reachable at three sites, not one.** v3.1.10 has
-the identical unvalidated `memcpy(rsp, req, req_length)` in three
-`case` branches — `modbus.c:905` (FC 0x05), `:936` (FC 0x06) and
-`:1058` (FC 0x16). The CVE write-up cites only the first. A 300k-exec
-campaign reached 0x16; a 30-minute campaign reached all three. 0x05 is
-the narrowest gate, requiring the data field to equal `0xFF00` or
-`0x0000`, and was still reached twice.
-
-**The threat model decides reachability, not the code.** Under a
-260-byte bound on `req_length` — what `_modbus_receive_msg` can
-actually deliver over the network — the same library, the same input
-and the same build produce no crash in 29,377,732 executions. Under a
-1024-byte bound, modeling a caller that supplies its own length, the
-crash is immediate. Reporting "vulnerable" without naming the bound
-says very little.
-
-**pymodbus crash counts are N/A, not 0.** The catch-all at
-`pdu/decoders.py:93` converts `struct.error`, `IndexError`,
-`ValueError` and `ModbusException` into a log line and a `None`
-return. Exception-based oracles are structurally unable to observe
-parser faults at that layer. Removing the exception whitelist entirely
-produced no uncaught exception in 5,000 executions.
-
-**Shared-input replay.** 27 raw ADUs replayed against six
-configurations; 17 diverge. libmodbus never consults the MBAP length
-field and accepts every frame that lies about it. pymodbus does
-consult it, but a frame declaring more bytes than arrived makes the
-framer wait for data that cannot come rather than rejecting it — the
-same unverified field causes over-acceptance in one library and loss
-of progress in the other. The protocol ID is the only frame-level
-check pymodbus refuses outright. On PDU contents the usual narrative
-inverts: libmodbus answers every malformed-PDU probe with an exception
-response, while pymodbus accepts some of them and its client and
-server paths disagree on three.
+Method, tables and discussion are in the project paper; this is the
+summary.
 
 ## Layout
 
@@ -82,10 +63,9 @@ working directory bind-mounted at `/work`.
 Three details cost us whole campaigns and are worth repeating:
 
 - `AFL_USE_ASAN=1` must be set on `./configure`, not only when linking
-  the harness. Stack redzones are placed at compile time. The same
-  harness ran 630,698 executions without a crash against an
-  uninstrumented build and crashed within seconds against an
-  instrumented one.
+  the harness. Stack redzones are placed at compile time, so an
+  uninstrumented library silently absorbs the overflow: 630,698 clean
+  executions before we caught this, seconds to crash afterwards.
 - `modbus_set_response_timeout(ctx, 0, 1)` is required. Since v3.1.x
   the flush path in `response_exception()` sleeps for the response
   timeout, 500 ms by default, and most mutated inputs take an
