@@ -1,8 +1,7 @@
 # CIS 6614 — Modbus Comparative Fuzzing: Run Procedure
 
 Scope: libmodbus v3.1.10 (vulnerable) / v3.1.11 (fixed) / v3.2.0 (current
-release), two threat models, pymodbus v3.15.0. `RUN-full.md` has longer
-explanations if a step is unclear.
+release), two threat models, pymodbus v3.15.0.
 
 Files: `harness.c`, `harness_client.c`, `harness_py.py`,
 `harness_py_client.py`, `mkseeds.py`, `modbus.dict`
@@ -10,6 +9,18 @@ Files: `harness.c`, `harness_client.c`, `harness_py.py`,
 ---
 
 ## 0. Setup
+
+**Prerequisites.** Docker Desktop (or Docker Engine) must be installed and
+running. Nothing else is needed on the host: both toolchains live in
+containers.
+
+**Platform.** These runs were done on an Apple Silicon Mac (M1). The
+`--platform linux/amd64` flag below forces the x86_64 image, which Docker
+executes under emulation, so throughput is roughly 16k executions per second
+rather than the rates AFL++ reaches natively. The comparisons here are
+internally valid because every run used the same machine, but absolute
+throughput is not portable. On a native x86_64 Linux host, drop
+`--platform linux/amd64` and expect substantially higher numbers.
 
 On the host:
 
@@ -382,8 +393,12 @@ Rows 1 and 4 are the same binary code and the same input; only `REQ_CAP` differs
 >
 > Three trials per configuration is below the number recommended for
 > significance testing; we report median and range instead. Campaigns ran under
-> x86_64 emulation on Apple Silicon, which affects absolute throughput but not
-> the coverage or crash results.
+> x86_64 emulation on Apple Silicon. This does not affect the exec-matched
+> results, since 300,000 executions is the same work at any speed, but it does
+> bound the wall-clock cross-check: a native host would complete considerably
+> more executions in the same thirty minutes, so the coverage ceiling we report
+> is an upper bound on what this hardware reached, not on what the harness can
+> reach.
 
 ---
 
