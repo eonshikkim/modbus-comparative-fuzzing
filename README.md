@@ -29,9 +29,6 @@ CIS 6614 group project, University of Central Florida.
   bytes that never arrive. On malformed PDUs the usual narrative
   inverts — libmodbus rejects all of them, pymodbus accepts some.
 
-Method, tables and discussion are in the project paper; this is the
-summary.
-
 ## Layout
 
 | Path | What it is |
