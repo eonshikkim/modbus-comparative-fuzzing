@@ -37,6 +37,9 @@ CIS 6614 group project, University of Central Florida.
 | `harness_client.c` | libmodbus client harness, 9 response-parsing APIs |
 | `harness_py.py` | pymodbus server harness (Atheris) |
 | `harness_py_client.py` | pymodbus client harness (Atheris) |
+| `harness_py_noguard.py` | pymodbus harness with the decoder whitelist removed |
+| `mkseeds.py` | generates the AFL++ seed corpora (`seeds/`, `seeds_client/`) |
+| `mkseeds_py.py` | generates the Atheris seed corpus (`seeds_py/`) |
 | `mkprobes.py` | generates the 27 shared replay inputs |
 | `replay_libmodbus.c` | replay driver, classifies ACCEPT / EXCEPTION / DROP / ERROR |
 | `replay_pymodbus.py` | replay driver, classifies ACCEPT / REJECT / DROP / INCOMPLETE / ERROR |
@@ -45,10 +48,15 @@ CIS 6614 group project, University of Central Florida.
 | `run_wall.sh` | wall-clock cross-check against the exec-matched budget |
 | `collect_wall.py` | compares the two budgets |
 | `triage_crashes.py` | groups saved crash inputs by root cause |
-| `seeds/`, `modbus.dict` | AFL++ seed corpus and dictionary |
-| `artifacts/crashes/` | the five wall-clock crash inputs, named for the gate each enters |
+| `probe_counts.py`, `oracle_observability.txt` | caught-exception vs crash counts for the 95-input replay |
+| `seeds/`, `seeds_client/`, `seeds_py/` | seed corpora for the four harnesses |
+| `modbus.dict` | AFL++ dictionary |
 | `min.bin` | minimized CVE-2024-10918 proof-of-concept, 261 bytes |
 | `replay_*.tsv` | per-configuration replay results |
+| `results_libmodbus.txt`, `results_pymodbus.txt` | raw campaign statistics behind Table 1 |
+| `artifacts/crashes/` | the five wall-clock crash inputs, named for the gate each enters |
+| `artifacts/wallclock/` | fuzzer stats and triage for the 30-minute runs |
+| `manifest.txt` | build provenance: toolchain, the three libmodbus commits, source hashes |
 | `RUN.md` | full reproduction procedure, sections 0–10 |
 
 ## Reproducing
