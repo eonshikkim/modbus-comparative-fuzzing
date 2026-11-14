@@ -77,3 +77,18 @@ Three details cost us whole campaigns and are worth repeating:
 Everything here targets published, already-patched defects in
 open-source libraries, on loopback, in containers. No network service
 is attacked and no unpatched vulnerability is disclosed.
+
+## AI Disclosure
+
+Per the CIS 6614 Artificial Intelligence (AI) Use Policy, generative AI use in
+this repository is disclosed here.
+
+**Tool:** Claude (Anthropic), accessed September–November 2026.
+
+**Used for:** writing and debugging the code in this repository — the fuzzing
+harnesses, the replay drivers, and the helper scripts — and drafting the
+documentation (`README.md`, `RUN.md`).
+
+The authors designed the experiments, ran every campaign, and verified all
+results reported here against the raw artifacts. The authors are responsible
+for the accuracy of this repository.
